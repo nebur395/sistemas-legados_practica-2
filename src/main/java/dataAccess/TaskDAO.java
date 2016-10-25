@@ -46,10 +46,10 @@ public class TaskDAO {
      */
     private static void doubleEnter(MusicSp msp) throws IOException {
         msp.getConnection().enter();
-        //String[] result = msp.getConnection().getScreen();
-        //if (result[41].equals("                                                                                 ")) {
-        //    msp.getConnection().enter();
-        //}
+        String[] result = msp.getConnection().getScreen();
+        if (!result[41].equals("                                                                                ")) {
+            msp.getConnection().enter();
+        }
     }
 
     /**
