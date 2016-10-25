@@ -1,7 +1,9 @@
-package music_sp;
+package dataAccess;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import music_sp.*;
+import models.TaskVO;
 
 public class TaskDAO {
     public static void newTask(TaskVO t, MusicSp msp) throws IOException {
