@@ -1,6 +1,10 @@
 package music_sp;
 
 public class Const {
-    public static final String EXECUTABLE_NAME = "/usr/bin/s3270";
-    public static final int SCREEN_HEIGHT = 43;
+    /**
+     * Name of the s3270 executable
+     */
+    /**
+     * Width of the remote terminal
+     */
 }
