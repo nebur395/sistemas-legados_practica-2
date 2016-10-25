@@ -36,7 +36,7 @@ public class TaskDAO {
         //}
     }
 
-    public static ArrayList<TaskVO> getTasks(MusicSp msp) {
+    public static ArrayList<TaskVO> getTasks(MusicSp msp, boolean taskType) {
         return null;
     }
 
