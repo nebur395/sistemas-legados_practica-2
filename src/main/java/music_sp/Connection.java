@@ -84,7 +84,6 @@ public class Connection {
         }
     }
 
-    public boolean parseResult(String res1, String res2) {
     /**
      * Parses the result of a command
      *
@@ -92,6 +91,7 @@ public class Connection {
      * @param res2 Result line of the command
      * @return true if the command was a success, false otherwise
      */
+    private boolean parseResult(String res1, String res2) {
         //The status message consists of 12 blank - separated fields.
         //1 Keyboard State: If the keyboard is unlocked, the letter U. If the keyboard is locked waiting for a response from the host, or if not connected to a host, the letter L. If the keyboard is locked because of an operator error (field overflow, protected field, etc.), the letter E.
         //2 Screen Formatting: If the screen is formatted, the letter F. If unformatted or in NVT mode, the letter U.
@@ -113,12 +113,12 @@ public class Connection {
         return (this.lc_success = res2.equals("ok"));
     }
 
-    public boolean parseResult() {
     /**
      * Parses the result of a command, reading it from the saved stdout
      *
      * @return true if the command was a success, false otherwise
      */
+    private boolean parseResult() {
         try {
             String res1 = this.stdout.readLine();
             String res2 = this.stdout.readLine();
