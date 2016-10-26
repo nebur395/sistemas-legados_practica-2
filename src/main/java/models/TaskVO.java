@@ -26,7 +26,7 @@ public class TaskVO {
      *
      * @param description Description of the Task
      * @param date        Date of the Task
-     * @param assignee     Asignee of the Task
+     * @param assignee    Asignee of the Task
      */
     public TaskVO(String description, String date, String assignee) {
         this.description = description;
@@ -110,5 +110,14 @@ public class TaskVO {
      */
     public boolean isGeneral() {
         return type;
+    }
+
+    /**
+     * Serialize class into JSON
+     *
+     * @return Object in JSON format
+     */
+    public String serialize() {
+        return String.format("{\"description\":\"%s\",\"date\":\"%s\",\"assignee\":\"%s\",\"type\":\"%s\"}", this.description, this.date, this.assignee, this.type ? "general" : "specific");
     }
 }
