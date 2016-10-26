@@ -1,0 +1,33 @@
+<div id="starterStyle">
+  <div class="container">
+
+    <!-- used for right align the form -->
+    <div class="col-md-6 col-md-offset-3" id="loginForm">
+
+      <form role="form" ng-submit="signIn()">
+        <!-- this div will show only when an error login occurs -->
+        <div class="alert alert-danger" ng-if="error" name="error">
+          <strong>Woops!</strong> {{errorMsg}}
+        </div>
+
+        <!-- user name input form -->
+        <div class="form-group">
+          <input ng-click="hideError()" type="text" ng-model="userName" class="form-control"
+                 placeholder="Introduce el nombre de usuario" name="username" required />
+        </div>
+
+        <!-- password input form-->
+        <div class="form-group">
+          <input ng-click="hideError()" type="password" ng-model="password" class="form-control"
+                 placeholder="Introduce la contraseña" name="password" required />
+        </div>
+
+        <!-- submit button form-->
+        <p style="text-align:center">
+          <button type="submit" class="btn btn-default theme-accent" name="login">Iniciar sesión</button>
+        </p>
+
+      </form>
+    </div>
+  </div>
+</div>
