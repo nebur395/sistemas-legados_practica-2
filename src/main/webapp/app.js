@@ -1,4 +1,4 @@
-angular.module('musicPsApp', ['ui.router', 'base64'])
+angular.module('musicPsApp', ['ui.router'])
 
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
