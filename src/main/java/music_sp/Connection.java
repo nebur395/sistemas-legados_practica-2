@@ -61,7 +61,7 @@ public class Connection {
         this.stdin = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
         this.stdout = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         try {
-            Thread.sleep(1500); //Wait until the connection is done to prevent the next instruction from finding a blocked keyboard
+            Thread.sleep(2000); //Wait until the connection is done to prevent the next instruction from finding a blocked keyboard
         } catch (InterruptedException e) {
             // NOBODY CARES ABOUT YOUR EXCEPTIONS
         }
