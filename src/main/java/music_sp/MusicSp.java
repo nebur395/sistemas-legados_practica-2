@@ -54,15 +54,29 @@ public class MusicSp {
      *
      * @param user     Username
      * @param password Password
+     * @return true in case the login was correct, false if either the username or the password is incorrect
      * @throws IOException In case there was an error during the communication with the server
      */
-    public void login(String user, String password) throws IOException {
+    public boolean login(String user, String password) throws IOException {
         this.connection.enter();
         this.connection.writeString(user);
         this.connection.enter();
+        // Check incorrect username
+        String[] result = this.connection.getScreen();
+        if (result[6].contains("Userid is not authorized")) {
+            // Incorrect user
+            return false;
+        }
         this.connection.writeString(password);
         this.connection.enter();
+        // Check incorrect password
+        result = this.connection.getScreen();
+        if (result[6].contains("Password incorrect!")) {
+            // Incorrect password
+            return false;
+        }
         this.connection.enter();
+        return true;
     }
 
     /**
