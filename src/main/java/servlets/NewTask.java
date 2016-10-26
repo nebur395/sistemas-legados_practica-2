@@ -34,15 +34,15 @@ public class NewTask extends HttpServlet {
         //Client will send a JSON with the information to create a new task. The JSON will be read and it's data extracted.
 
         //This String will be read directly from the JSON, this variable will not exist.
-        String asignee = "";
+        String assignee = "";
         TaskVO task = null;
         //If it's empty, is a general task
-        if(asignee.equals("")){
+        if(assignee.equals("")){
             task = new TaskVO("descipcion", "fecha");
         }
         //If no, is a specific task
         else{
-            task = new TaskVO("descipcion", "fecha", asignee);
+            task = new TaskVO("descipcion", "fecha", assignee);
         }
         TaskDAO.newTask(task, (MusicSp) request.getSession().getAttribute("MusicSp"));
         response.setStatus(HttpServletResponse.SC_OK);

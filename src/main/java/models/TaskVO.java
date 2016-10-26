@@ -15,7 +15,7 @@ public class TaskVO {
     /**
      * Asignee of the task. If its a General Task, this String is empty
      */
-    private String asignee;
+    private String assignee;
     /**
      * Type of the task. Its true if the task is general, false if its specific
      */
@@ -26,12 +26,12 @@ public class TaskVO {
      *
      * @param description Description of the Task
      * @param date        Date of the Task
-     * @param asignee     Asignee of the Task
+     * @param assignee     Asignee of the Task
      */
-    public TaskVO(String description, String date, String asignee) {
+    public TaskVO(String description, String date, String assignee) {
         this.description = description;
         this.date = date;
-        this.asignee = asignee;
+        this.assignee = assignee;
         this.type = false;
     }
 
@@ -44,7 +44,7 @@ public class TaskVO {
     public TaskVO(String description, String date) {
         this.description = description;
         this.date = date;
-        this.asignee = "";
+        this.assignee = "";
         this.type = true;
     }
 
@@ -89,18 +89,18 @@ public class TaskVO {
      *
      * @return Description of the class
      */
-    public String getAsignee() {
-        return asignee;
+    public String getAssignee() {
+        return assignee;
     }
 
     /**
      * Changes the Asignee of the Task. Passing an empty String will convert the class into a
      * general Task, passing a non-empty String will convert the class to an specific Task.
      *
-     * @param asignee New Asignee
+     * @param assignee New Asignee
      */
-    public void setAsignee(String asignee) {
-        this.asignee = asignee;
+    public void setAssignee(String assignee) {
+        this.assignee = assignee;
     }
 
     /**

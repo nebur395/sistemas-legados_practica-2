@@ -29,7 +29,7 @@ public class TaskDAO {
         msp.getConnection().writeString(t.getDate());
         doubleEnter(msp);
         if (!t.isGeneral()) {
-            msp.getConnection().writeString(t.getAsignee());
+            msp.getConnection().writeString(t.getAssignee());
             doubleEnter(msp);
         }
         msp.getConnection().writeString(t.getDescription());
