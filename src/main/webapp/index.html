@@ -1,10 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+<html lang="es">
 
+<head>
+  <title>MUSIC/SP</title>
+  <!--name page browser-->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap imports -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <!-- Google fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css' />
+
+  <!--load the favicons-->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- AngularJS imports -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+
+  <!-- css own imports -->
+  <link rel="stylesheet" href="css/colorTheme.css" />
+  <link rel="stylesheet" href="css/navbarStyle.css" />
+  <link rel="stylesheet" href="css/homeStyle.css" />
+  <link rel="stylesheet" href="css/starterStyle.css" />
+
+
+  <!-- OWN SCRIPTS -->
+  <!-- App states-->
+  <script src="app.js"></script>
+  <!-- services -->
+  <script src="javascript/services.js"></script>
+  <!-- directives -->
+  <script src="javascript/directives.js"></script>
+  <!-- controllers -->
+  <script src="javascript/controllers/navbarController.js"></script>
+  <script src="javascript/controllers/starterController.js"></script>
+  <script src="javascript/controllers/homeController.js"></script>
+</head>
+
+
+<body ng-app="musicPsApp">
+<!-- the content here will be the 'body page' and it will change dependending of the current state -->
+<navbar></navbar>
+<ui-view></ui-view>
 </body>
+
 </html>
