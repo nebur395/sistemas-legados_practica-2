@@ -2,13 +2,10 @@
 .navbar-inverse .navbar-nav>li>a {
   color:#fff;
 }
-/* home button hover */
-.navbar-brand:hover {
-  background-color:#3F51B5 !important;
-}
 /* home button */
 .navbar-inverse .navbar-brand {
   color: #fff;
+  cursor: default;
 }
 /* navbar buttons hover */
 .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {

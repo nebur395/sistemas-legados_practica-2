@@ -1,7 +1,7 @@
 angular.module('musicPsApp')
 
 // 'auth' service manage the authentication function of the page with the server
-    .factory('auth', function ($state, $http, $base64) {
+    .factory('auth', function ($state, $http) {
 
         var _authenticated = false;
 
