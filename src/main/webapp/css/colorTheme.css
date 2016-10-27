@@ -63,3 +63,17 @@ a:focus, a:hover {
   height: 100px;
   visibility: hidden;
 }
+
+/* user alert if input is too long*/
+.errorInput {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(247, 0, 0, 0.79);
+}
+
+.errorInput:focus {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(247, 0, 0, 0.79);
+}
+
+.textErrorInput {
+  color: rgba(247, 0, 0, 0.79) !important;
+  font-size: 90%;
+}

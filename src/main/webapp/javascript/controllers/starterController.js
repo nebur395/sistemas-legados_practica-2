@@ -5,6 +5,8 @@ angular.module('musicPsApp')
         // inputs visual variables
         $scope.userName = "";
         $scope.password = "";
+        $scope.userNameMaxLength = false;
+        $scope.passwordMaxLength = false;
 
         // feedback handling variables
         $scope.errorMsg = "";
@@ -22,11 +24,30 @@ angular.module('musicPsApp')
             $scope.error = true;
         };
 
+        // Watches to control input variables length
+        $scope.$watch('userName', function () {
+            if ($scope.userName.length > 79) {
+                $scope.userName = $scope.userName.slice(0, 79);
+            } else if ($scope.userName.length == 79) {
+                $scope.userNameMaxLength = true;
+            } else {
+                $scope.userNameMaxLength = false;
+            }
+        });
+        $scope.$watch('password', function () {
+            if ($scope.password.length > 79) {
+                $scope.password = $scope.password.slice(0, 79);
+            } else if ($scope.password.length == 79) {
+                $scope.passwordMaxLength = true;
+            } else {
+                $scope.passwordMaxLength = false;
+            }
+        });
+
         // send the login form to the auth service
         $scope.signIn = function () {
-            var user = $scope.userName;
-            var password = $scope.password;
-            // Standard 'authorization basic'
+            var user = $scope.userName.replace(/ /g,"_");
+            var password = $scope.password.replace(/ /g,"_");
             auth.login(user, password, showError);
         }
     }]);

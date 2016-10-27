@@ -3,7 +3,7 @@ angular.module('musicPsApp')
 // 'auth' service manage the authentication function of the page with the server
     .factory('auth', function ($state, $http) {
 
-        var _authenticated = true;
+        var _authenticated = false;
 
         return {
             //return true if the user is authenticated
@@ -21,7 +21,7 @@ angular.module('musicPsApp')
                 $http({
                     method: 'GET',
                     url: 'logout'
-                }).success(function (data) {
+                }).success(function () {
                     auth.authenticate(false);
                     $state.go('starter');
                 }).error(function () {
