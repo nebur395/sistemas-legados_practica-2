@@ -8,22 +8,24 @@
       <div class="row">
         <!-- date input form -->
         <div class="form-group col-md-3">
-          <input type="text" ng-model="date" class="form-control" required ng-click="hideError()"
-                 placeholder="Introduce una fecha (DDMM)" ng-class="{errorInput: dateMaxLength}" />
+          <input type="text" ng-model="date" class="form-control" required
+                 ng-click="hideError();hideSuccess()" placeholder="Introduce una fecha (DDMM)"
+                 ng-class="{errorInput: dateMaxLength}" />
           <p class="textErrorInput" ng-if="dateMaxLength">Se necesitan 4 caracteres (DDMM)</p>
         </div>
 
         <!-- description input form -->
         <div class="form-group col-md-3">
-          <input type="text" ng-model="description" class="form-control" required ng-click="hideError()"
-                 placeholder="Introduce una descripción" ng-class="{errorInput: descriptionMaxLength}" />
+          <input type="text" ng-model="description" class="form-control" required
+                 ng-click="hideError();hideSuccess()" placeholder="Introduce una descripción"
+                 ng-class="{errorInput: descriptionMaxLength}" />
           <p class="textErrorInput" ng-if="descriptionMaxLength">Límite de caracteres alcanzado</p>
         </div>
 
         <!-- assignee input form-->
         <div class="form-group col-md-3">
           <input type="text" ng-model="assignee" class="form-control"
-                 placeholder="Introduce un encargado (opcional)" ng-click="hideError()"
+                 placeholder="Introduce un encargado (opcional)" ng-click="hideError();hideSuccess()"
                  ng-class="{errorInput: assigneeMaxLength}" />
           <p class="textErrorInput" ng-if="assigneeMaxLength">Límite de caracteres alcanzado</p>
         </div>
@@ -38,6 +40,10 @@
     <!-- this div will show only when an error occurs -->
     <div class="alert alert-danger" ng-if="error">
       <strong>Woops!</strong> {{errorMsg}}
+    </div>
+    <!-- this div will show only when an success occurs -->
+    <div class="alert alert-success" ng-if="success">
+      <strong>Éxito!</strong> {{successMsg}}
     </div>
 
     <div class="row">

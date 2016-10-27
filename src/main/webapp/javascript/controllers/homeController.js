@@ -143,10 +143,23 @@ angular.module('musicPsApp')
                     description: $scope.description,
                     assignee: $scope.assignee
                 };
-                taskService.addTask(object);
-                $scope.date = "";
-                $scope.description = "";
-                $scope.assignee = "";
+                taskService.addTask(object,updateTaks);
             }
-        }
+        };
+
+        var updateTaks = function (task) {
+            $scope.date = "";
+            $scope.description = "";
+            $scope.assignee = "";
+            $scope.taskAllList.push(task);
+            sortCustom($scope.taskAllList);
+            if (task.assignee.length >= 1) {
+                $scope.taskSpecificList.push(task);
+                sortCustom($scope.taskSpecificList);
+            } else {
+                $scope.taskGeneralList.push(task);
+                sortCustom($scope.taskGeneralList);
+            }
+            showSuccess("Tarea añadida correctamente");
+        };
     }]);

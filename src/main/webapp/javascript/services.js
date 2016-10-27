@@ -38,10 +38,9 @@ angular.module('musicPsApp')
                         "user": user,
                         "pass": password
                     }
-                }).success(function (data) {
+                }).success(function () {
                     that.authenticate(true);
                     $state.go('home');
-
                 }).error(function (data) {
                     callback(data);
                 });
@@ -55,14 +54,7 @@ angular.module('musicPsApp')
         return {
             //get the general list
             getGeneralList: function (callback) {
-                var list = [
-                    {date:"1001",description:"asa",assignee:""},
-                    {date:"0202",description:"bsb",assignee:""},
-                    {date:"3003",description:"csc",assignee:""}
-                ];
-                callback(list);
-
-                /*$http({
+                $http({
                     method: 'GET',
                     url: 'viewTasks',
                     headers: {
@@ -71,19 +63,12 @@ angular.module('musicPsApp')
                 }).success(function (data) {
                     callback(data);
                 }).error(function () {
-                });*/
+                });
             },
 
             //get the general list
             getSpecificList: function (callback) {
-                var list = [
-                    {date:"0101",description:"aaa",assignee:"a"},
-                    {date:"2002",description:"bbb",assignee:"b"},
-                    {date:"0303",description:"ccc",assignee:"c"}
-                ];
-                callback(list);
-
-                /*$http({
+                $http({
                     method: 'GET',
                     url: 'viewTasks',
                     headers: {
@@ -92,11 +77,11 @@ angular.module('musicPsApp')
                 }).success(function (data) {
                     callback(data);
                 }).error(function () {
-                });*/
+                });
             },
 
             // add task
-            addTask: function (object) {
+            addTask: function (object,callback) {
                 $http({
                     method: 'POST',
                     url: 'newTask',
@@ -105,6 +90,7 @@ angular.module('musicPsApp')
                         'Content-Type': 'application/json'
                     }
                  }).success(function () {
+                    callback(object);
                  }).error(function () {
                  });
             }
