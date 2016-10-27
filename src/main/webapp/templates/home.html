@@ -37,23 +37,23 @@
 
     <div class="row">
       <!-- all task filter button -->
-      <div class="col-xs-4">
+      <div class="col-xs-4 filterButton">
         <button ng-click="filterMode(1)" class="btn btn-default theme-accent">Ver todas las
           tareas</button>
       </div>
       <!-- general task filter button -->
-      <div class="col-xs-4">
+      <div class="col-xs-4 filterButton">
         <button ng-click="filterMode(2)" class="btn btn-default theme-accent">Ver tareas
           generales</button>
       </div>
       <!-- specific task filter button -->
-      <div class="col-xs-4">
+      <div class="col-xs-4 filterButton">
         <button ng-click="filterMode(3)" class="btn btn-default theme-accent">Ver tareas
           específicas</button>
       </div>
     </div>
 
-    <div ng-if="viewAll" class="table-responsive">
+    <div ng-if="viewAll" class="table-responsive taskList">
       <table class="table table-hover">
         <thead>
         <tr>
@@ -72,7 +72,7 @@
       </table>
     </div>
 
-    <div ng-if="viewGeneral" class="table-responsive">
+    <div ng-if="viewGeneral" class="table-responsive taskList">
       <table class="table table-hover">
         <thead>
         <tr>
@@ -92,7 +92,7 @@
     </div>
 
 
-    <div ng-if="viewSpecific" class="table-responsive">
+    <div ng-if="viewSpecific" class="table-responsive taskList">
       <table class="table table-hover">
         <thead>
         <tr>
