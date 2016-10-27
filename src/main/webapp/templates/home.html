@@ -1,9 +1,61 @@
 <div id="homeStyle">
   <div class="container">
 
-    <h1 id="firstContent" style="text-align:center">Echa un vistazo rápido a los ejercicios que has
-      realizados hasta el momento</h1>
+    <h1 id="firstContent" style="text-align:center">¡Bienvenido al mejor gestor de tareas del
+      mundo ;) !</h1>
 
+    <form role="form" ng-submit="addTask()">
+      <div class="row">
+        <!-- date input form -->
+        <div class="form-group col-md-3">
+          <input type="text" ng-model="date" class="form-control" required
+                 placeholder="Introduce una fecha (DDMM)" ng-class="{errorInput: dateMaxLength}" />
+          <p class="textErrorInput" ng-if="dateMaxLength">Se necesitan 4 caracteres (DDMM)</p>
+        </div>
+
+        <!-- description input form -->
+        <div class="form-group col-md-3">
+          <input type="text" ng-model="description" class="form-control" required
+                 placeholder="Introduce una descripción" ng-class="{errorInput: descriptionMaxLength}" />
+          <p class="textErrorInput" ng-if="descriptionMaxLength">Límite de caracteres alcanzado</p>
+        </div>
+
+        <!-- assignee input form-->
+        <div class="form-group col-md-3">
+          <input type="text" ng-model="assignee" class="form-control"
+                 placeholder="Introduce un encargado (opcional)"
+                 ng-class="{errorInput: assigneeMaxLength}" />
+          <p class="textErrorInput" ng-if="assigneeMaxLength">Límite de caracteres alcanzado</p>
+        </div>
+
+        <!-- submit button form-->
+        <div class="col-md-3" id="addTaskButton">
+          <button type="submit" class="btn btn-success">Añadir tarea</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="row">
+      <!-- all task filter button -->
+      <div class="col-xs-4">
+        <button ng-click="filterMode(1)" class="btn btn-default theme-accent">Ver todas las
+          tareas</button>
+      </div>
+      <!-- general task filter button -->
+      <div class="col-xs-4">
+        <button ng-click="filterMode(2)" class="btn btn-default theme-accent">Ver tareas
+          generales</button>
+      </div>
+      <!-- specific task filter button -->
+      <div class="col-xs-4">
+        <button ng-click="filterMode(3)" class="btn btn-default theme-accent">Ver tareas
+          específicas</button>
+      </div>
+    </div>
+
+    <div>
+
+    </div>
 
   </div>
 </div>
