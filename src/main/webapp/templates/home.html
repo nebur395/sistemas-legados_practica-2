@@ -53,9 +53,62 @@
       </div>
     </div>
 
-    <div>
-
+    <div ng-if="viewAll" class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Fecha (DDMM)</th>
+          <th>Descripción</th>
+          <th>Encargado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="task in taskAllList">
+          <td>{{task.date}}</td>
+          <td>{{task.description}}</td>
+          <td>{{task.assignee}}</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
 
+    <div ng-if="viewGeneral" class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Fecha (DDMM)</th>
+          <th>Descripción</th>
+          <th>Encargado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="task in taskGeneralList">
+          <td>{{task.date}}</td>
+          <td>{{task.description}}</td>
+          <td>{{task.assignee}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div ng-if="viewSpecific" class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Fecha (DDMM)</th>
+          <th>Descripción</th>
+          <th>Encargado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="task in taskSpecificList">
+          <td>{{task.date}}</td>
+          <td>{{task.description}}</td>
+          <td>{{task.assignee}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
