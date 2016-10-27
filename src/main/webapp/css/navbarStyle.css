@@ -1,6 +1,7 @@
 /* navbar buttons */
 .navbar-inverse .navbar-nav>li>a {
   color:#fff;
+  cursor: pointer;
 }
 /* home button */
 .navbar-inverse .navbar-brand {
