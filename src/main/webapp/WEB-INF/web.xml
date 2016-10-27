@@ -12,7 +12,7 @@
 
     <servlet>
 		<servlet-name>Login</servlet-name>
-		<servlet-class>src.main.java.servlets.Login</servlet-class>
+		<servlet-class>servlets.Login</servlet-class>
     </servlet>
     <servlet-mapping>
 		<servlet-name>Login</servlet-name>
@@ -21,7 +21,7 @@
 
     <servlet>
 		<servlet-name>NewTask</servlet-name>
-		<servlet-class>src.main.java.servlets.NewTask</servlet-class>
+		<servlet-class>servlets.NewTask</servlet-class>
     </servlet>
     <servlet-mapping>
 		<servlet-name>NewTask</servlet-name>
@@ -30,7 +30,7 @@
 
     <servlet>
 		<servlet-name>ViewTasks</servlet-name>
-		<servlet-class>src.main.java.servlets.ViewTasks</servlet-class>
+		<servlet-class>servlets.ViewTasks</servlet-class>
     </servlet>
     <servlet-mapping>
 		<servlet-name>ViewTasks</servlet-name>

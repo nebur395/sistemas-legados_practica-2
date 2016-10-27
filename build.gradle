@@ -16,6 +16,7 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     providedCompile "javax.servlet:javax.servlet-api:3.0.1"
+    compile 'net.sf.json-lib:json-lib:2.4:jdk15'
 }
 
 jettyRun {
