@@ -18,7 +18,7 @@
 		<servlet-name>Login</servlet-name>
 		<url-pattern>/login</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
 		<servlet-name>NewTask</servlet-name>
 		<servlet-class>src.main.java.servlets.NewTask</servlet-class>
@@ -27,7 +27,7 @@
 		<servlet-name>NewTask</servlet-name>
 		<url-pattern>/newTask</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
 		<servlet-name>ViewTasks</servlet-name>
 		<servlet-class>src.main.java.servlets.ViewTasks</servlet-class>
@@ -36,3 +36,4 @@
 		<servlet-name>ViewTasks</servlet-name>
 		<url-pattern>/viewTasks</url-pattern>
     </servlet-mapping>
+</web-app>
