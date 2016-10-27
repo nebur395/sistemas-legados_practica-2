@@ -17,6 +17,35 @@ angular.module('musicPsApp')
         $scope.viewGeneral = false;
         $scope.viewSpecific = false;
 
+        // feedback handling variables
+        $scope.error = false;
+        $scope.success = false;
+        $scope.successMsg = "";
+        $scope.errorMsg = "";
+
+        // hide the error mensage
+        $scope.hideError = function () {
+            $scope.errorMsg = "";
+            $scope.error = false;
+        };
+        // show the error mensage
+        var showError = function (error) {
+            $scope.errorMsg = error;
+            $scope.error = true;
+        };
+
+        // show the success mensage
+        var showSuccess = function (message) {
+            $scope.successMsg = message;
+            $scope.success = true;
+        };
+
+        // hide the success mensage
+        $scope.hideSuccess = function () {
+            $scope.success = false;
+            $scope.successMsg = "";
+        };
+
         // server request for the list of general tasks
         $scope.getGeneralList = function () {
             taskService.getGeneralList(function (tasks) {
@@ -60,10 +89,13 @@ angular.module('musicPsApp')
         $scope.$watch('date', function () {
             if ($scope.date.length > 4) {
                 $scope.date = $scope.date.slice(0, 4);
-            } else if ($scope.date.length == 4) {
-                $scope.dateMaxLength = false;
+            } else if ($scope.date.includes(" ")) {
+                $scope.dateMaxLength = true;
+                debugger;
             } else if ($scope.date.length >= 1 && $scope.date.length < 4) {
                 $scope.dateMaxLength = true;
+            } else if ($scope.date.length == 4) {
+                $scope.dateMaxLength = false;
             } else {
                 $scope.dateMaxLength = false;
             }
@@ -100,18 +132,21 @@ angular.module('musicPsApp')
 
         // send the register form to the auth service
         $scope.addTask = function () {
-            // check if the both passwords match
-            if ($scope.password !== $scope.rePassword) {
-                showError('Invalid passwords');
+            if ($scope.dateMaxLength) {
+                showError("Revisa los campos inválidos");
             } else {
-                var userObject = {
-                    user: $scope.userName,
-                    email: $scope.email,
-                    pass: $scope.password,
-                    repass: $scope.rePassword
-
+                $scope.date = $scope.date.replace(/ /g,"_");
+                $scope.description = $scope.description.replace(/ /g,"_");
+                $scope.assignee = $scope.assignee.replace(/ /g,"_");
+                var object = {
+                    date: $scope.date,
+                    description: $scope.description,
+                    assignee: $scope.assignee
                 };
-                auth.register(userObject, showError);
+                taskService.addTask(object);
+                $scope.date = "";
+                $scope.description = "";
+                $scope.assignee = "";
             }
         }
     }]);
