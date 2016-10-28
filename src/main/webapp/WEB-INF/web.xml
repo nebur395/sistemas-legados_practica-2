@@ -36,4 +36,13 @@
 		<servlet-name>ViewTasks</servlet-name>
 		<url-pattern>/viewTasks</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+      <servlet-name>Logout</servlet-name>
+      <servlet-class>servlets.Logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>Logout</servlet-name>
+      <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
 </web-app>
