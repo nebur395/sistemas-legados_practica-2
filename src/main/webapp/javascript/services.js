@@ -18,11 +18,12 @@ angular.module('musicPsApp')
 
             //logout function
             logout: function () {
+                var that = this;
                 $http({
                     method: 'GET',
                     url: 'logout'
                 }).success(function () {
-                    auth.authenticate(false);
+                    that.authenticate(false);
                     $state.go('starter');
                 }).error(function () {
                 });
