@@ -30,7 +30,7 @@ angular.module('musicPsApp')
             },
 
             //send the login info to the server
-            login: function (user, password, callback) {
+            login: function (user, password, callbackProgress, callback) {
                 var that = this;
                 $http({
                     method: 'GET',
@@ -43,6 +43,7 @@ angular.module('musicPsApp')
                     that.authenticate(true);
                     $state.go('home');
                 }).error(function (data) {
+                    callbackProgress(false);
                     callback(data);
                 });
             }

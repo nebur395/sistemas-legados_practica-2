@@ -7,6 +7,7 @@ angular.module('musicPsApp')
         $scope.password = "";
         $scope.userNameMaxLength = false;
         $scope.passwordMaxLength = false;
+        $scope.logging = false;
 
         // feedback handling variables
         $scope.errorMsg = "";
@@ -48,6 +49,11 @@ angular.module('musicPsApp')
         $scope.signIn = function () {
             var user = $scope.userName.replace(/ /g,"_");
             var password = $scope.password.replace(/ /g,"_");
-            auth.login(user, password, showError);
+            activeProgress(true);
+            auth.login(user, password, activeProgress, showError);
+        };
+
+        var activeProgress = function (active) {
+            $scope.logging = active;
         }
     }]);
