@@ -1,9 +1,10 @@
 package dataAccess;
 
+import models.TaskVO;
+import music_sp.MusicSp;
+
 import java.io.IOException;
 import java.util.ArrayList;
-import music_sp.*;
-import models.TaskVO;
 
 /**
  * Class that offers a collection of methods to manage Tasks in a remote terminal
@@ -12,7 +13,7 @@ public class TaskDAO {
     /**
      * Inserts a new task into the given system
      *
-     * @param t Task to insert
+     * @param t   Task to insert
      * @param msp System to insert the Task into
      * @throws IOException In case there was an error during the communication with the server
      */
@@ -55,12 +56,74 @@ public class TaskDAO {
     /**
      * Gets all the tasks in the defined MusicSp
      *
-     * @param msp System to connect to
+     * @param msp      System to connect to
      * @param taskType Type of the task. true if its a general Task, false otherwise
      * @return List of all the tasks in the system
      */
-    public static ArrayList<TaskVO> getTasks(MusicSp msp, boolean taskType) {
-        return null;
+    public static ArrayList<TaskVO> getTasks(MusicSp msp, boolean taskType) throws IOException {
+        // 2, enter, taskType?1:2, enter, READ, 3
+        // 2 work modes. If the task list crosses the screen border, an if not
+        msp.getConnection().writeString("2");
+        doubleEnter(msp);
+        if (taskType) {
+            // General Tasks
+            msp.getConnection().writeString("1");
+            doubleEnter(msp);
+        } else {
+            // Specific Tasks
+            msp.getConnection().writeString("2");
+            doubleEnter(msp);
+        }
+
+        ArrayList<TaskVO> taskList = new ArrayList<TaskVO>();
+        String[] result = msp.getConnection().getScreen();
+        for (int i = result.length - 1; i != 0; i--) {
+            // Start from bottom to top, until we see our own command (stop of list)
+            if (result[i].startsWith("1    ") || result[i].startsWith("2    ")) {
+                break; // Stop iterating, end of last task list
+            }
+            if (result[i].startsWith("TASK ")) {
+                TaskVO t = recordToTask(result[i]);
+                taskList.add(t);
+            }
+        }
+        //If the last line is not empty, the task list CROSSES the border
+        if (!result[39].equals("                                                                                ")) {
+            msp.getConnection().enter(); // Advance screen
+            String[] screen = msp.getConnection().getScreen();
+
+            for (String i : screen) {
+                if (i.startsWith("TOTAL TASK")) {
+                    break;
+                }
+                if (i.startsWith("TASK ")) {
+                    TaskVO t = recordToTask(i);
+                    taskList.add(t);
+                }
+
+            }
+
+        }
+        return taskList;
     }
 
+    private static TaskVO recordToTask(String record) {
+        String[] splitted_record = record.split(" ");
+        // splitted_record content:
+        // 0: "TASK" constant
+        // 1: task number, followed by ":" ("1:")
+        // 2: task type: "GENERAL" or "SPECIFIC"
+        // 3: date
+        // 4: assignee ("-----" in general tasks)
+        // 5: description
+        TaskVO t;
+        if (splitted_record[2].equals("GENERAL")) {
+            // General Task
+            t = new TaskVO(splitted_record[5], splitted_record[3]);
+        } else {
+            // Specific Task
+            t = new TaskVO(splitted_record[5], splitted_record[3], splitted_record[4]);
+        }
+        return t;
+    }
 }
