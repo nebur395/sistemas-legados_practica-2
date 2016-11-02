@@ -63,7 +63,7 @@ angular.module('musicPsApp')
                         "type": "general"
                     }
                 }).success(function (data) {
-                    callback(data);
+                    callback(data.tasks);
                 }).error(function () {
                 });
             },
@@ -77,7 +77,7 @@ angular.module('musicPsApp')
                         "type": "specific"
                     }
                 }).success(function (data) {
-                    callback(data);
+                    callback(data.tasks);
                 }).error(function () {
                 });
             },
