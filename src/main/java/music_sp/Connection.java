@@ -10,11 +10,11 @@ public class Connection {
     /**
      * Standard input of the communication subprocess
      */
-    public BufferedWriter stdin;
+    private BufferedWriter stdin;
     /**
      * Standard output of the communication subprocess
      */
-    public BufferedReader stdout;
+    private BufferedReader stdout;
     /**
      * Subprocess object
      */
@@ -74,7 +74,7 @@ public class Connection {
      * @param s command to write
      * @throws IOException In case there was an error during the communication with the server
      */
-    public void send(String s) throws IOException {
+    private void send(String s) throws IOException {
         if (s.endsWith("\n")) {
             this.stdin.write(s);
             this.stdin.flush();
