@@ -137,10 +137,6 @@ public class Connection {
      */
     public boolean writeString(String s) throws IOException {
         this.send("string(\"" + s + "\")");
-        try {
-            Thread.sleep(150);
-        } catch (InterruptedException e) {
-        }
         return this.parseResult();
     }
 
@@ -152,10 +148,6 @@ public class Connection {
      */
     public boolean enter() throws IOException {
         this.send("enter");
-        try {
-            Thread.sleep(150);
-        } catch (InterruptedException e) {
-        }
         return this.parseResult();
     }
 
@@ -167,10 +159,6 @@ public class Connection {
      */
     public boolean quit() throws IOException {
         this.send("quit");
-        try {
-            Thread.sleep(150);
-        } catch (InterruptedException e) {
-        }
         this.connection.destroy();
         return true;
     }
