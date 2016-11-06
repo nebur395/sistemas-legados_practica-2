@@ -88,11 +88,11 @@ public class TaskDAO {
             }
         }
         //If the last line is not empty, the task list CROSSES the border
-        if (!result[39].equals("                                                                                ")) {
+        while (!result[39].equals("                                                                                ")) {
             msp.getConnection().enter(); // Advance screen
-            String[] screen = msp.getConnection().getScreen();
+            result = msp.getConnection().getScreen();
 
-            for (String i : screen) {
+            for (String i : result) {
                 if (i.startsWith("TOTAL TASK")) {
                     break;
                 }
