@@ -85,8 +85,6 @@ public class MusicSp {
      * @throws IOException In case there was an error during the communication with the server
      */
     public void tasks() throws IOException {
-        this.connection.writeString("FLIB");
-        this.connection.enter();
         this.connection.writeString("TAREAS.C");
         this.connection.enter();
         try {
