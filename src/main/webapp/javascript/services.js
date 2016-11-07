@@ -83,7 +83,7 @@ angular.module('musicPsApp')
             },
 
             // add task
-            addTask: function (object,callback) {
+            addTask: function (object,callbackSuccess,callbackError) {
                 $http({
                     method: 'POST',
                     url: 'newTask',
@@ -92,8 +92,9 @@ angular.module('musicPsApp')
                         'Content-Type': 'application/json'
                     }
                  }).success(function () {
-                    callback(object);
-                 }).error(function () {
+                    callbackSuccess(object);
+                 }).error(function (data) {
+                    callbackError(data);
                  });
             }
         };

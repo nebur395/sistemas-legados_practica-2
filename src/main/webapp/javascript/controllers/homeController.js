@@ -143,7 +143,7 @@ angular.module('musicPsApp')
                     description: $scope.description,
                     assignee: $scope.assignee
                 };
-                taskService.addTask(object,updateTasks);
+                taskService.addTask(object,updateTasks,showError);
             }
         };
 
