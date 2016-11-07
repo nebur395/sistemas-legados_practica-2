@@ -47,14 +47,30 @@ public class NewTask extends HttpServlet {
         TaskVO task = null;
         //If it's empty, is a general task
         if(assignee.equals("")){
-            task = new TaskVO(description, date);
+            if(description.length()<=12){
+                task = new TaskVO(description, date);
+                TaskDAO.newTask(task, (MusicSp) request.getSession().getAttribute("MusicSp"));
+                response.setStatus(HttpServletResponse.SC_OK);
+            }
+            else{
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                response.getWriter().println("La descripción es demasiado larga. Tamaño máximo: 12 caracteres");
+            }
         }
         //If no, is a specific task
         else{
-            task = new TaskVO(description, date, assignee);
+            int sum = assignee.length() + description.length();
+            if(sum<=16){
+                task = new TaskVO(description, date, assignee);
+                TaskDAO.newTask(task, (MusicSp) request.getSession().getAttribute("MusicSp"));
+                response.setStatus(HttpServletResponse.SC_OK);
+            }
+            else{
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                response.getWriter().println("La suma de los campos 'descripción' y 'encargado' no puede ser superior" +
+                    "a 16 caracteres.");
+            }
         }
-        TaskDAO.newTask(task, (MusicSp) request.getSession().getAttribute("MusicSp"));
-        response.setStatus(HttpServletResponse.SC_OK);
     }
 
     private JSONObject readJSON (BufferedReader bf) throws IOException{
