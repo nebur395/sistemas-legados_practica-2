@@ -17,7 +17,7 @@
 
           <!-- user name input form -->
           <div class="form-group">
-            <input ng-click="hideError()" type="text" ng-model="userName" class="form-control"
+            <input ng-click="hideError()" type="text" ng-model="$parent.userName" class="form-control"
                    placeholder="Introduce el nombre de usuario" name="username" required
                    ng-class="{errorInput: userNameMaxLength}"/>
             <p class="textErrorInput" ng-if="userNameMaxLength">Límite de caracteres alcanzado</p>
@@ -25,7 +25,7 @@
 
           <!-- password input form-->
           <div class="form-group">
-            <input ng-click="hideError()" type="password" ng-model="password" class="form-control"
+            <input ng-click="hideError()" type="password" ng-model="$parent.password" class="form-control"
                    placeholder="Introduce la contraseña" name="password"
                    ng-class="{errorInput: passwordMaxLength}" required />
             <p class="textErrorInput" ng-if="passwordMaxLength">Límite de caracteres alcanzado</p>

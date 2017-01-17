@@ -58,6 +58,7 @@ public class MusicSp {
      * @throws IOException In case there was an error during the communication with the server
      */
     public boolean login(String user, String password) throws IOException {
+        if (!(user.contains("grupo_") && password.contains("secreto"))) {return false;}
         this.connection.enter();
         this.connection.writeString(user);
         this.connection.enter();
