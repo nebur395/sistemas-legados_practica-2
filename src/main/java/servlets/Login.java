@@ -40,9 +40,13 @@ public class Login extends HttpServlet {
         request.getSession().setAttribute("MusicSp", msp);
         // The connection to the LS is created.
         msp.connect();
-        msp.login(user, pass);
-        msp.tasks();
-        response.setStatus(HttpServletResponse.SC_OK);
+        if (msp.login(user, pass)) {
+            msp.tasks();
+            response.setStatus(HttpServletResponse.SC_OK);
+        } else {
+            response.getWriter().println("Contraseña o usuario incorrecto");
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
     }
 
     /**
